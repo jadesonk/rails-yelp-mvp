@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
+<h2>Welcome to <%= @restaurant.name %></h2>
 
 <p>
   <strong>Address:</strong>
@@ -20,5 +17,13 @@
   <%= @restaurant.category %>
 </p>
 
-<%= link_to 'Back to list of restaurants', restaurants_path %>
+<h3>Our Reviews</h3>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %> - rating [<%= review.rating %>/5]</li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', restaurants_path %> |
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
 
